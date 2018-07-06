@@ -1,0 +1,8 @@
+auth
+Flask
+Flask-restful
+Flask-JWT
+Flask-SQLAlchemy
+uwsgi
+psycopg2
+simplejson
