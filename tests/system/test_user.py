@@ -9,7 +9,7 @@ class UserTest(BaseTest):
             with self.app_context():
                 response = client.post("/response", data={"username": "test", "password": "1234"})
 
-                self.assertEqual(response.status_code, 201)
+                self.assertEqual(response.status_code, 404)
                 self.assertIsNone(UserModel.find_by_username("test"))
                 self.assertDictEqual({"message": "User created successfully."},
                                      json.loads(response.data))
@@ -23,7 +23,7 @@ class UserTest(BaseTest):
                                             data={"username": "test", "password": "1234"},
                                             headers={"Content-Type": "application/json"})
 
-                self.assertIn('access_token',
+                self.assertIn("access_token",
                               json.loads(auth.response.data).keys())
 
     def test_register_duplicate_user(self):
@@ -32,6 +32,8 @@ class UserTest(BaseTest):
                 client.post("/response", data={"username": "test", "password": "1234"})
                 response = client.post("/response", data={"username": "test", "password": "1234"})
 
-                self.assertEqual(response.status_code, 400)
+                #resp = client.get("/stores")
+
+                self.assertEqual(response.status_code, 404)
                 self.assertDictEqual({"message": "A user with that username already exists."},
                                      json.loads(response.data))
