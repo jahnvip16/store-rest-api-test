@@ -72,7 +72,7 @@ class StoreTest(BaseTest):
 
                 resp = client.get("/stores")
 
-                self.assertDictEqual({"id": 1, "stores": [{"name": "test", "items": []}]},
+                self.assertDictEqual({"id": 1, "stores": [{"id": 1, "name": "test", "items": []}]},
                                      json.loads(resp.data))
 
     def test_store_list_with_items(self):
