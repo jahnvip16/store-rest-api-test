@@ -59,4 +59,4 @@ class StoreTest(BaseTest):
                 "items": [{"name": "test_item", "price": 19.99}]
             }
 
-        self.assertDictEqual(store.json(), expected)
+            self.assertDictEqual(store.json(), expected)
