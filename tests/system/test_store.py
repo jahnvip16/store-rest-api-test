@@ -1,8 +1,7 @@
-import json
-
 from models.item import ItemModel
 from models.store import StoreModel
 from tests.base_test import BaseTest
+import json
 
 
 class StoreTest(BaseTest):
@@ -62,7 +61,7 @@ class StoreTest(BaseTest):
                 resp = client.get("store/test")
 
                 self.assertEqual(resp.status_code, 200)
-                self.assertDictEqual({"id": 1, "name": "test", "items": [{"name": "test", "price": 19.99}]},
+                self.assertDictEqual({"id": 1, "name": "test", "items": [{"id": 1, "name": "test", "price": 19.99}]},
                                      json.loads(resp.data))
 
     def test_store_list(self):
